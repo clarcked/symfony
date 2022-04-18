@@ -14,6 +14,8 @@ RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa7
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/bin/composer  && chmod +x /usr/bin/composer
+RUN composer create-project symfony/skeleton /var/www/html
+RUN cd /var/www/html && composer require symfony/webapp-pack 
     
 
 WORKDIR /var/www/
